@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ShoppingList/app/src/main/res/layout/activity_shopping.xml" value="0.11197916666666667" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ShoppingList/app/src/main/res/layout/dialog_add_shopping_item.xml" value="0.18525179856115107" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ShoppingList/app/src/main/res/layout/shopping_item.xml" value="0.22826086956521738" />
       </map>
     </option>
