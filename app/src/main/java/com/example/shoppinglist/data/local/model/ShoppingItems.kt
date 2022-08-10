@@ -7,7 +7,7 @@ import java.util.*
 @Entity(tableName = "shopping_item")
 data class ShoppingItems(
     var name: String,
-    var amount: String,
+    var amount: Int,
     @PrimaryKey(autoGenerate = false)
     var id: String = UUID.randomUUID().toString()
 )
