@@ -13,15 +13,12 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
 
-class ShoppingActivity : AppCompatActivity() {
-//    override val kodein by kodein()
-//    private val factory: ShoppingViewModelFactory by instance()
+class ShoppingActivity : AppCompatActivity(), KodeinAware {
+    override val kodein by kodein()
+    private val factory: ShoppingViewModelFactory by instance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shopping)
-        val db = ShoppingDatabase(this)
-        val repository = ShoppingRepository(db)
-        val factory = ShoppingViewModelFactory(repository)
         val viewModel = ViewModelProviders.of(this, factory)[ShoppingViewModel::class.java]
 
         val adapter = ShoppingAdapter(listOf(), viewModel)
