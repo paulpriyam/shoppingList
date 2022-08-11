@@ -14,19 +14,4 @@ import com.example.shoppinglist.data.local.model.ShoppingItems
 )
 abstract class ShoppingDatabase : RoomDatabase() {
     abstract fun getShoppingDao(): ShoppingDao
-
-    companion object {
-        @Volatile
-        private var instance: ShoppingDatabase? = null
-        private val LOCK = Any()
-        operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
-            instance ?: createDatabase(context).also { instance = it }
-        }
-
-        fun createDatabase(context: Context) = Room.databaseBuilder(
-            context.applicationContext,
-            ShoppingDatabase::class.java,
-            "ShoppingDb.db"
-        ).build()
-    }
 }

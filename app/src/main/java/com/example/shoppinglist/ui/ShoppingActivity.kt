@@ -1,26 +1,23 @@
 package com.example.shoppinglist.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProviders
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shoppinglist.R
-import com.example.shoppinglist.data.local.ShoppingDatabase
 import com.example.shoppinglist.data.local.model.ShoppingItems
-import com.example.shoppinglist.repository.ShoppingRepository
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_shopping.*
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.kodein
-import org.kodein.di.generic.instance
 
-class ShoppingActivity : AppCompatActivity(), KodeinAware {
-    override val kodein by kodein()
-    private val factory: ShoppingViewModelFactory by instance()
+@AndroidEntryPoint
+class ShoppingActivity : AppCompatActivity() {
+
+    private lateinit var viewModel: ShoppingViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shopping)
-        val viewModel = ViewModelProviders.of(this, factory)[ShoppingViewModel::class.java]
 
+        viewModel = ViewModelProvider(this).get(ShoppingViewModel::class.java)
         val adapter = ShoppingAdapter(listOf(), viewModel)
         rvShopping.layoutManager = LinearLayoutManager(this)
         rvShopping.adapter = adapter
